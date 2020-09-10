@@ -1,7 +1,55 @@
-function allActivities() {
+function allBooks() {
     return cy.request({
         method: 'GET',
-        url: '/Activities',
+        url: 'Books',
+        headers: {
+            'Accept': 'application/json'
+        },
+        failOnStatusCode: false,
+    })
+}
+
+function getBook(idBook) {
+    return cy.request({
+        method: 'GET',
+        url: `/Books/${idBook}`,
+        headers: {
+            'Accept': 'application/json'
+        },
+        failOnStatusCode: false,
+    })
+}
+
+function addBook(book) {
+    return cy.request({
+        method: 'POST',
+        url: 'Books',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        failOnStatusCode: false,
+        body: book
+    })
+}
+
+function updateBook(idbook, book) {
+    return cy.request({
+        method: 'PUT',
+        url: `Books/${idbook}`,
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        failOnStatusCode: false,
+        body: book
+    })
+}
+
+function deleteBook(idBook) {
+    return cy.request({
+        method: 'DELETE',
+        url: `Books/${idBook}`,
         headers: {
             'Accept': 'application/json'
         },
@@ -9,52 +57,4 @@ function allActivities() {
     })
 }
 
-function getActivity(activityId) {
-    return cy.request({
-        method: 'GET',
-        url: `/Activities/${activityId}`,
-        headers: {
-            'Accept': 'application/json'
-        },
-        failOnStatusCode: false,
-    })
-}
-
-function addActivity(activity) {
-    return cy.request({
-        method: 'POST',
-        url: '/Activities',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        failOnStatusCode: false,
-        body: activity
-    })
-}
-
-function updateActivity(activityId, activity) {
-    return cy.request({
-        method: 'PUT',
-        url: `/Activities/${activityId}`,
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        failOnStatusCode: false,
-        body: activity
-    })
-}
-
-function deleteActivity(activityId) {
-    return cy.request({
-        method: 'DELETE',
-        url: `/Activities/${activityId}`,
-        headers: {
-            'Accept': 'application/json'
-        },
-        failOnStatusCode: false,
-    })
-}
-
-export { allActivities, addActivity, deleteActivity, getActivity, updateActivity }
+export { allBooks, getBook, addBook, updateBook, deleteBook }

@@ -1,5 +1,8 @@
 {
     "baseUrl": "https://fakerestapi.azurewebsites.net/api",
     "video": false,
-    "ignoreTestFiles": ["**/requests/*.js", "**/payloads/*"]
+    "ignoreTestFiles": [
+        "**/requests/*.js",
+        "**/payloads/*"
+    ]
 }
